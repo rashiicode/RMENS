@@ -1,0 +1,170 @@
+
+<section id="sellers">
+    <div class="seller container">
+        <h2>SUITS</h2>
+        <div class="best-seller">
+            
+
+
+
+            </div>
+            <div class="best-p1">
+                
+
+
+
+                </div>
+            </div>
+            <div class="best-p1">
+            
+
+
+            </div>
+            <div class="best-p1">
+                
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="seller container">
+        <h2>SHIRTS</h2>
+        <div class="best-seller">
+          
+
+
+
+            </div>
+            <div class="best-p1">
+               
+
+
+
+            </div>
+            <div class="best-p1">
+              
+
+
+
+            </div>
+            <div class="best-p1">
+               
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="seller container">
+        <h2>TROUSERS</h2>
+        <div class="best-seller">
+            
+
+
+
+
+            </div>
+            <div class="best-p1">
+                
+
+
+
+            </div>
+            <div class="best-p1">
+               
+
+
+
+
+            </div>
+            <div class="best-p1">
+             
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+</section>
+
+
+
+try { 
+    const { otp } = req.body;
+
+    // Retrieve the email from the session
+    let verifyEmail = "";
+    if (req.session.verifyEmail) {
+        verifyEmail = req.session.verifyEmail;
+    }
+
+    const user = await userCollection.findOne({ email: verifyEmail });
+
+    if (!user) {
+        console.log('User not found in forgotOtp');
+        return res.render('error');
+    }
+// ...
+
+// Check if OTP is expired
+if (user.otp.expiration && user.otp.expiration < new Date()) {
+console.log('OTP has expired');
+return res.render('otpExpired'); // Create an 'otpExpired' view or redirect to an appropriate page
+}
+
+// Check if the entered OTP matches the stored OTP
+if (user.otp.code !== otp) {
+console.log('Invalid OTP, Recheck Your OTP');
+return res.render('invalidOtp'); // Create an 'invalidOtp' view or redirect to an appropriate page
+}
+
+// ...
+
+// If no errors, clear the OTP details after successful verification
+user.otp = {
+code: null,
+expiration: null
+};
+
+await user.save();
+
+console.log('OTP verified successfully in forgotOtp. Now handle the password reset logic here');
+// Add your logic for handling password reset here
+
+res.redirect('/login'); // Redirect to the login page after successful OTP verification
+} catch (error) {
+console.error(error);
+res.status(500).json({ message: 'Internal Server Error while verifying OTP' });
+}
+
+};
+
+
+const confirmPage=(req,res)=>{
+res.render("user/confirmPage")
+}
+
+const confirmPageget=(req,res)=>{
+res.render("user/confirmPage")
+}
+
+
+const logout=(req,res)=>{
+req.session.destroy((err)=>{
+  if(err){
+      console.error('Error destroying session:',err);
+  }
+  res.redirect("/")
+})
+
+
+// old 
+<!-- 

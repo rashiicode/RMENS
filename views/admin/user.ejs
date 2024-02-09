@@ -1,0 +1,163 @@
+
+      <%-include('side')-%>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+      
+      
+       
+      
+      
+      <table id="example" class="table table-striped" style="width:100%">
+
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Example table row, you can add more rows dynamically with server data -->
+
+          <%let count=0%>
+          <% users.forEach(user => { %>
+            <% count++ %>
+            <tr>
+                <td><%= count%></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.isActive ? 'Active' : 'Blocked' %></td>
+                <td>
+                    <% if (user.isActive) { %>
+                        <form action="/admin/block/<%= user._id %>" method="POST" style="display: inline;">
+                            <button type="submit" style="background-color: rgba(104, 101, 193, 0.947); color: white;border-color: aliceblue;color: rgb(238, 238, 238);padding: 5px;width: 70px;text-align: center;">BLOCK</button>
+                        </form>
+                    <% } else { %>
+                        <form action="/admin/unblock/<%= user._id %>" method="POST" style="display: inline;">
+                            <button type="submit" style="background-color: rgba(176, 0, 0, 0.947); color: white;border-color: aliceblue;color: rgb(238, 238, 238);padding: 5px;width: 70px;text-align: center;">UNBLOCK</button>
+                        </form>
+                    <% } %>
+                </td>
+            </tr>
+        <% }) %>
+          <!-- Add more rows as needed -->
+      </tbody>
+  </table>
+
+
+      
+      
+       <!-- DATATABLE  SCRIPT-->
+       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+       <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+       <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       
+       <script src="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.js"></script>  
+       <script>
+          new DataTable('#example');
+              function blockUser(userId) {
+          // Implement block user logic here
+          console.log('User blocked:', userId);
+      }
+
+      function unblockUser(userId) {
+          // Implement unblock user logic here
+          console.log('User unblocked:', userId);
+      }
+
+         </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var win = navigator.platform.indexOf('Win') > -1;
+  if (win && document.querySelector('#sidenav-scrollbar')) {
+    var options = {
+      damping: '0.5'
+    }
+    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+  }
+</script>
+
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc --><script src="./assets/js/material-dashboard.min.js?v=3.1.0"></script>
+  </body>
+
+</html>

@@ -1,0 +1,144 @@
+const create = async(req,res)=>{
+    try{
+      console.log("Workingcreate");
+      const name = await Category.find({},{name:1,_id:0});
+      console.log(name);
+      
+      res.render("admin/addproduct", {name})//cheking if there is any session
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+  
+  // const register = async (req, res) => {
+  //   try {
+  //     if (!req.session.admin) {
+  //       res.redirect('admin/login');
+  //       return;
+  //     }
+  
+  //     const imageArray = [];
+  
+  //     // Check if files are present in the request
+  //     if (req.files && req.files.length > 0) {
+  //       for (const file of req.files) {
+  //         imageArray.push(file.filename);
+  //       }
+  //     }
+  
+  //     const data = new collection({
+  //       productname: req.body.productname,
+  //       price: req.body.price,
+  //       rating: req.body.rating,
+  //       model: req.body.model,
+  //       description: req.body.description,
+  //       stock: req.body.stock,
+  //       image: imageArray,
+  //       category: req.body.category,
+  //     });
+  
+  //     data.save()
+  //       .then(() => {
+  //         return collection.find({}).exec();
+  //       })
+  //       .then((productdatadetails) => {
+  //         res.render('admin/homee', {productdatadetails});
+  //       })
+  //       .catch((err) => {
+  //         res.send(err);
+  //         console.log(err);
+  //       });
+  //   } catch (error) {
+  //     console.error(error);
+  //     res.status(500).send('Internal Server Error');
+  //   }
+  // };
+  
+  const register =  async (req,res)=>{
+    console.log("HI");
+    const imageArray = [];
+    // for(const file of req.files){
+    //   imageArray.push(file.filename)
+    // }
+      const data =new collection({
+          productname:req.body.productname, 
+          price:req.body.price,
+          rating:req.body.rating,
+          model:req.body.model,
+          description:req.body.description,
+          stock:req.body.stock,
+          image:req.files.map(file => file.path),
+          // image: req.file ? req.file.filename : undefined,
+          category:req.body.category
+        });
+      // console.log(data)
+      console.log(data)
+      const productdata=await collection.insertMany(data)
+      console.log(productdata)
+      const productdatadetails = await collection.find();
+      res.render('admin/homee',{productdatadetails})
+      // data.save()
+      // collection.find({}).exec()
+      //         .then(product=>{
+      //         res.render("admin/homee",{product:product})
+              
+              // console.log(data);
+  //         })
+  //         .catch((err)=>{
+  //                   res.send(err)
+  //                   console.log(err);
+  //               })
+   }
+   ///////////////////////////////////////////////////
+
+
+
+
+   const edit = async(req,res)=>{
+    try {
+        const editId = req.params.id;   
+        const product = await collection.findById(editId)
+        const name = await Category.find({},{name:1,_id:0});
+        console.log(name);
+        res.render("admin/edit.ejs",{product, name}) 
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
+// 
+const update = async (req, res) => {
+  try {
+    const productId = req.params.id;
+
+    // Fetch the product by ID
+    const product = await collection.findById(productId);
+
+    if (!product) {
+      return res.status(404).send('Product not found');
+    }
+
+    // Update product information based on form data
+    product.productname = req.body.productname;
+    product.price = req.body.price;
+    product.rating = req.body.rating;
+    product.model = req.body.model;
+    product.description = req.body.description;
+    product.stock = req.body.stock;
+    product.category = req.body.category;
+
+    // Append new images to the existing ones only if newImage is present in the form data
+    if (req.files && req.files.length > 0) {
+      product.image = product.image.concat(req.files.map(file => file.path));
+    }
+
+    // Save the updated product
+    await product.save();
+
+    res.redirect("/admin/homee");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+};

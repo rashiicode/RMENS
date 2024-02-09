@@ -1,0 +1,212 @@
+<%-include('side')-%>
+<nav class="navbar navbar-expand-lg navbar-light navbar-bg-color" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="#">ADMIN</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/admin/addCategory">Add category</a>
+          <a class="nav-item nav-link" href="/admin/user">Manage User</a>
+            <!-- <a class="nav-item nav-link" onclick="logout()" href="/admin/adminLogout">Logout</a> -->
+      </div>
+     
+  </div>
+</nav>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+
+ 
+
+
+
+
+
+  <%let Number=0%>
+<% if (categoryListing && categoryListing.length > 0) { %>
+
+    <!-- <table > -->
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+               
+                <th>Actions</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody> 
+          
+            <% categoryListing.forEach(category => { %>
+               <%Number ++%>
+                <tr>
+                    <td><%= Number %></td>
+                    <td><%= category.categoryName %></td>
+                    <td><%= category.description %></td>
+                    <td class="actions">
+                        <!-- EDIT Form -->
+                   <!-- EDIT Link -->
+<!-- EDIT Link -->
+<div class="edit " style="display: flex;margin-left: 40px;" >
+           
+  <a style="background-color: rgba(104, 101, 193, 0.947); color: white;border-color: aliceblue;color: rgb(238, 238, 238);padding: 5px;width: 70px;text-align: center;position: relative;right:40px;"href="/admin/editCategory/<%= category._id %>" class="list-button">
+    EDIT
+  </a>
+
+<% if (category.isStatus) { %>
+  <form action="/admin/blockCategory/<%= category._id %>" method="POST" style="display: inline;">
+      <button type="submit" style="background-color: rgba(104, 101, 193, 0.947); color: white;border-color: aliceblue;color: rgb(242, 242, 242);padding: 5px;width: 70px;text-align: center;position: relative;right:40px;">LIST</button>
+  </form>
+<% } else { %>
+  <form action="/admin/unblockCategory/<%= category._id %>" method="POST" style="display: inline;">
+      <button type="submit" style="background-color: rgba(176, 0, 0, 0.947); color: white;border-color: aliceblue;color: white;border-color: aliceblue;color: rgb(242, 242, 242);padding: 5px;width: 70px;text-align: center;">UNLIST</button>
+  </form>
+<% } %> 
+
+ <td><%= category.isStatus ? 'Active' : 'Blocked' %></td>
+
+
+
+                </tr>
+            <% }); %>
+
+        </tbody>
+
+    </table>
+
+<% } else { %>
+    <p>No categories found</p>
+<% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- DATATABLE  SCRIPT-->
+ <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+ <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
+ <script src="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.js"></script>  
+ <script>
+    new DataTable('#example');
+    
+          function blockProduct(userIdd) {
+          // Implement block user logic here
+          console.log('User blocked:', userIdd);
+      }
+
+      function unblockProduct(userIdd) {
+          // Implement unblock user logic here
+          console.log('User unblocked:', userIdd);
+      }
+
+
+   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var win = navigator.platform.indexOf('Win') > -1;
+  if (win && document.querySelector('#sidenav-scrollbar')) {
+    var options = {
+      damping: '0.5'
+    }
+    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+  }
+</script>
+
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc --><script src="./assets/js/material-dashboard.min.js?v=3.1.0"></script>
+  </body>
+
+</html>

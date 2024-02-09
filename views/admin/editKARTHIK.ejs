@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      margin: 0;
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .prtimage {
+      width: 5rem;
+      border: 1px;
+    }
+
+    .image-item {
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: red;
+      cursor: pointer;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: darkred;
+    }
+
+    #imagePreview {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .preview-image {
+      margin: 5px;
+      max-width: 100px; /* Set the maximum width */
+      max-height: 100px; /* Set the maximum height */
+      width: auto; /* Allow the width to adjust based on the max-width */
+      height: auto; /* Allow the height to adjust based on the max-height */
+    }
+  </style>
+</head>
+<body>
+  <h1>Edit Product</h1>
+
+  <form action="/admin/update/<%= product.id%>" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <label for="productname">Product Name:</label>
+    <input type="text" name="productname" id="name" value="<%= product.productname%>">
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price" value="<%= product.price%>" min="0">
+    <label for="model">Model:</label>
+    <input type="text" name="model" id="model" value="<%= product.model%>">
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description" value="<%= product.description%>">
+    <label for="stock">Stock:</label>
+    <input type="number" name="stock" id="stock" value="<%= product.stock%>" min="0">
+
+    <!-- Existing image -->
+    <div class="mb-3">
+      <label for="existingImages" class="form-label">Existing Images:</label>
+      <div class="d-flex flex-wrap align-items-center" id="imageContainer">
+        <% product.image.forEach((image, index) => { %>
+          <div class="ms-2 image-item" data-index="<%= index %>">
+            <img src="/<%= image %>" alt="Product Image" class="prtimage">
+            <span class="close-btn" onclick="deleteImage('<%= product._id %>', '<%= index %>')">&#10006;</span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Input for new images -->
+    <label for="newImages">New Images:</label>
+    <input type="file" id="newImages" name="image" class="form-control-file" accept="image/*" multiple onchange="previewImages(event)">
+    <div id="imagePreview"></div>
+
+    <!-- Category dropdown -->
+    <label for="category">Category:</label>
+    <select name="category" id="category" style="width: 100%; height: 35px; border-radius: 4px; margin-bottom: 10px;">
+      <option value="" <%= !product.category ? 'selected disabled' : '' %>>Select</option>
+      <% name.forEach(category => { %>
+        <option value="<%= category.name %>" <%= product.category === category.name ? 'selected' : '' %>><%= category.name %></option>
+      <% }); %>
+    </select>
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <script>
+    function previewImages(event) {
+      const previewContainer = document.getElementById('imagePreview');
+      previewContainer.innerHTML = ''; // Clear previous previews
+
+      const files = event.target.files;
+
+      for (const file of files) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const previewImage = document.createElement('img');
+          previewImage.src = e.target.result;
+          previewImage.classList.add('preview-image');
+          previewContainer.appendChild(previewImage);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+
+    async function deleteImage(productid, index) {
+      const imageItem = document.querySelector(`.image-item[data-index="${index}"]`);
+
+      // Send a fetch request to the server to delete the image
+      try {
+        const response = await fetch(`/admin/delete-image/${productid}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ index }), // Send the index of the image to delete
+        });
+
+        if (response.ok) {
+          // If the server successfully deleted the image, remove it from the DOM
+          imageItem.remove();
+        } else {
+          console.error('Failed to delete image from the server');
+        }
+      } catch (error) {
+        console.error('Error deleting image:', error);
+      }
+    }
+
+    function validateForm() {
+      // Get input values
+      const name = document.getElementById('name').value;
+      const price = document.getElementById('price').value;
+      const stock = document.getElementById('stock').value;
+      const model = document.getElementById('model').value;
+      const description = document.getElementById('description').value;
+      const category = document.getElementById('category').value;
+
+      // Reset previous error messages
+      document.getElementById('nameError').innerText = '';
+      document.getElementById('priceError').innerText = '';
+      document.getElementById('stockError').innerText = '';
+      document.getElementById('modelError').innerText = '';
+      document.getElementById('descriptionError').innerText = '';
+      document.getElementById('categoryError').innerText = '';
+
+      // Validate required fields
+      if (!name) {
+        document.getElementById('nameError').innerText = 'Product Name is required';
+        return false;
+      }
+
+      if (!price) {
+        document.getElementById('priceError').innerText = 'Price is required';
+        return false;
+      }
+
+      if (!stock) {
+        document.getElementById('stockError').innerText = 'Stock is required';
+        return false;
+      }
+
+      if (!model) {
+        document.getElementById('modelError').innerText = 'Model is required';
+        return false;
+      }
+
+      if (!description) {
+        document.getElementById('descriptionError').innerText = 'Description is required';
+        return false;
+      }
+
+      if (!category) {
+        document.getElementById('categoryError').innerText = 'Category is required';
+        return false;
+      }
+
+      // Validate price and stock
+      if (parseFloat(price) < 0) {
+        document.getElementById('priceError').innerText = 'Price cannot be negative';
+        return false;
+      }
+
+      if (parseInt(stock) < 0) {
+        document.getElementById('stockError').innerText = 'Stock cannot be negative';
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>

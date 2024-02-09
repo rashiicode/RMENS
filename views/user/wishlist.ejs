@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+<img style="margin-top: 70px;margin-left: 400px;" src="/image/wishlistempty.avif">
+<h  style="color: red;">WISHLIST EMPTY</h>
+
+
+
+
+
+
+
+</body> 
+</html>
+
+
+
+
+
+
+
+
+
+
+<div class="card-wrapper"   >
+    <div class="card">
+        <!-- card left -->
+        <div class="product-imgs">
+            <div class="img-display">
+                <div class="img-showcase">
+                    <% if (productList && productList.images && productList.images.length > 0) { %>
+                        <img src="<%= productList.images[0].slice(6) %>" alt="shoe image">
+                    <% } %>
+                </div>
+            </div>
+            <div class="img-select">
+                <% if (productList && productList.images && productList.images.length > 0) { %>
+                  
+                        <div class="img-item">
+                            
+                                <img src="<%= productList.images[0].slice(6)  %>" alt="shoe image">
+                           
+                        </div>
+                    
+               
+            </div>
+        </div>
+        
+        <!-- card right -->
+        <div class="product-content">
+            <h2 class="product-title"><%= productList.Name %></h2>
+            <!-- Other product details -->
+            <div class="product-detail">
+                <h2>About this item:</h2>
+                <p><%= productList.description %></p>
+                <ul>
+                    <li>Color: <span><%= productList.colour %></span></li>
+                    <li>Available: <span><%= productList.stock %></span></li>
+                    <li>Category: <span><%= productList.category%></span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <% } %>
+        <div   class = "purchase-info">   
+            <input type = "number" min = "0" value = "1">
+            <button type = "button" class = "btn">
+              Add to Cart <i class = "fas fa-shopping-cart"></i>
+            </button>
+            <button type = "button" class = "btn">Compare</button>
+          </div>
+          <div class="img-select">
+            <% if (productList && productList.images && productList.images.length > 0) { %>
+                <% productList.images.forEach(function(image) { %>
+                    <div class="img-item">
+                        <img src="<%= image.slice(6) %>" alt="shoe image">
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+        
+    </div>

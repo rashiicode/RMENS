@@ -1,0 +1,19 @@
+<% users.forEach(user => { %>
+    <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.isActive ? 'Active' : 'Blocked' %></td>
+        <td>
+            <% if (user.isActive) { %>
+                <form action="/admin/block/<%= user._id %>" method="POST" style="display: inline;">
+                    <button type="submit" style="background-color: red; color: white;">BLOCK</button>
+                </form>
+            <% } else { %>
+                <form action="/admin/unblock/<%= user._id %>" method="POST" style="display: inline;">
+                    <button type="submit" style="background-color: green; color: white;">UNBLOCK</button>
+                </form>
+            <% } %>
+        </td>
+    </tr>
+<% }) %>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .preview-image {
+        max-width: 100px;
+        max-height: 100px;
+        margin-right: 10px;
+    }
+        h1 {
+            background-color: #3510469a;
+            width: 600px;
+            position: absolute;
+            left: 400px;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+            margin-top: -100px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(161, 152, 152, 0.1);
+            margin-top: 100px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .prtimage {
+            width: 5rem;
+            border: 1px;
+        }
+
+        .image-item {
+            position: relative;
+            margin-bottom: 20px;
+            display: inline-block; /* Add inline block to align buttons */
+        }
+
+        .image-item:hover .preview-actions {
+            display: flex; /* Show action buttons on hover */
+        }
+
+        .preview-actions {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: none; /* Hide action buttons by default */
+        }
+
+        .preview-actions button {
+            margin-left: 5px;
+            padding: 2px 8px; /* Adjust padding */
+            font-size: 14px; /* Adjust font size */
+        }
+
+        .preview-actions button:hover {
+            opacity: 0.7; /* Reduce opacity on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Product </h1>
+
+    <form action="/admin/producEditPostPassed/<%= productedit._id%>" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <label for="Name">Product Name: <br> <small style="color: red;font-size: large;"> <%=locals.errormeg%></small></label>
+        <input type="text" class="form-control" id="Name" name="Name" value="<%= productedit.Name %>">
+
+        <label for="category">Category:</label>
+        <select class="form-control" id="category" name="category" required>
+            <% categoryExist.forEach(category => { %>
+            <option value="<%= category.categoryName %>"><%= category.categoryName %></option>
+            <% }) %>
+        </select>
+
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" id="price" name="price" value="<%= productedit.price %>">
+
+        <label for="stock">Stock:</label>
+        <input type="number" class="form-control" id="stock" name="stock" value="<%= productedit.stock %>">
+
+        <label for="brand">Brand:</label>
+        <input type="text" class="form-control" id="brand" name="brand" value="<%= productedit.brand %>">
+
+        <label for="colour">Colour:</label>
+        <input type="text" class="form-control" id="colour" name="colour" value="<%= productedit.colour %>">
+
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description" rows="3"><%= productedit.description %></textarea>
+
+        <label for="Images">Images:</label>
+        <input type="file" class="form-control" id="Images" name="images[]" multiple  onchange="previewImages(event)">
+
+        <div id="imagePreview">
+            <!-- Existing Images -->
+            <% productedit.images.forEach((image,index) => { %>
+                <div class="image-item">
+                    <img src="<%=productedit.images[index].slice(6)  %>" class="preview-image" alt="Product Image">
+                    <div class="preview-actions">
+                        <button type="button" class="btn btn-danger" onclick="deleteImage(this.parentNode.parentNode)">&#10006; Delete</button>
+                        <button type="button" class="btn btn-success" onclick="editImage(this.parentNode.parentNode)">&#9998; Edit</button>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit Product</button>
+    </form> 
+
+    <script>
+        function previewImages(event) {
+            const previewContainer = document.getElementById('imagePreview');
+            previewContainer.innerHTML = '';
+
+            const files = event.target.files;
+
+            for (const file of files) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                     const previewImage = document.createElement('img');
+                    previewImage.src = e.target.result;
+                    previewImage.classList.add('preview-image');
+                    const imageItem = document.createElement('div');
+                    imageItem.classList.add('image-item');
+                    imageItem.appendChild(previewImage);
+                    const previewActions = document.createElement('div');
+                    previewActions.classList.add('preview-actions');
+                    const deleteButton = document.createElement('button');
+                    deleteButton.type = 'button';
+                    deleteButton.classList.add('btn', 'btn-danger');
+                    deleteButton.innerHTML = '&#10006; Delete';
+                    deleteButton.addEventListener('click', function () {
+                        deleteImage(imageItem);
+                    });
+                    const editButton = document.createElement('button');
+                    editButton.type = 'button';
+                    editButton.classList.add('btn', 'btn-success');
+                    editButton.innerHTML = '&#9998; Edit';
+                    editButton.addEventListener('click', function () {
+                        editImage(imageItem);
+                    });
+                    previewActions.appendChild(deleteButton);
+                    previewActions.appendChild(editButton);
+                    imageItem.appendChild(previewActions);
+                    previewContainer.appendChild(imageItem);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function editImage(imageItem) {
+            // Logic to edit image associated with the given imageItem
+            alert('Edit image');
+        }
+
+        function deleteImage(imageItem) {
+            const previewContainer = document.getElementById('imagePreview');
+            previewContainer.removeChild(imageItem);
+            // Logic to delete image associated with the given imageItem
+        }
+
+        function validateForm() {
+            // Your validation logic here
+            return true;
+        }
+    </script>
+</body>
+</html>

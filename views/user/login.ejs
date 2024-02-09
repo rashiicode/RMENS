@@ -1,0 +1,459 @@
+<%- include('header')-%>  
+
+<style>
+
+.top-txt {
+    background-color:rgb(245, 243, 243);
+    width: 100%;
+    
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.945);
+    padding: 10px 0;
+    font-size: 14px;
+    
+}
+
+.head a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.945);
+    margin: 0 10px;
+    
+}
+
+
+/* //........ Navbar ........// */
+
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+    display: none;
+}
+
+.navbar {
+    box-shadow: 0 5px 4px rgb(146 161 176 / 15%);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    color: var(--black);
+    z-index: 100;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+}
+
+.navbar img {
+    margin-left: 3rem;
+}
+
+.menu-itemss {
+   
+    display: flex;
+
+   
+}
+
+.menu-itemss li {
+    list-style: none;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.navbar-container ul a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 18px;
+    position: relative;
+}
+
+.navbar-container ul a:after {
+    content: "";
+    position: absolute;
+    background: var(--primary-color);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+ 
+.navbar-container ul a:hover:after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        opacity: 0.95;
+    }
+    .navbar-container input[type="checkbox"],
+    .navbar-container .hamburger-lines {
+        display: block;
+    }
+    .navbar-container {
+        display: block;
+        position: relative;
+        height: 64px;
+    }
+    .navbar-container input[type="checkbox"] {
+        position: absolute;
+        display: block;
+        height: 32px;
+        width: 30px;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .navbar-container .hamburger-lines {
+        display: block;
+        height: 28px;
+        width: 35px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .navbar-container .hamburger-lines .line {
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #333;
+    }
+    .navbar-container .hamburger-lines .line1 {
+        transform-origin: 0% 0%;
+        transition: transform 0.3s ease-in-out;
+    }
+    .navbar-container .hamburger-lines .line2 {
+        transition: transform 0.2s ease-in-out;
+    }
+    .navbar-container .hamburger-lines .line3 {
+        transform-origin: 0% 100%;
+        transition: transform 0.3s ease-in-out;
+    }
+    .navbar .menu-itemsss {
+        padding-top: 100px;
+        background: #fff;
+        height: 100vh;
+        max-width: 100%;
+        transform: translate(-150%);
+        display: flex;
+        flex-direction: column;
+        /* margin-left: -40px;
+        padding-left: 40px; */
+        text-align: center;
+        transition: transform 0.5s ease-in-out;
+        /* box-shadow: 5px 0px 10px 0px #aaa; */
+        overflow: scroll;
+    }
+   
+    .menu-itemss li,
+    .navbar img {
+        margin: 0;
+    }
+    .navbar .menu-items li:nth-child(1) {
+        margin-top: 1.5rem;
+    }
+    .navbar-container .logo img {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        margin-top: 8px;
+    }
+    .navbar-container input[type="checkbox"]:checked~.menu-itemss{
+        transform: translateX(0);
+    }
+    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+        transform: rotate(45deg);
+    }
+    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+        transform: scaleY(0);
+    }
+    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+        transform: rotate(-45deg);
+    }
+    .navbar-container input[type="checkbox"]:checked~.home_page img {
+        display: none;
+        background: #fff;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar-container input[type="checkbox"]:checked~.navbar-container img {
+        display: none;
+    }
+}
+
+
+.nav-linkic {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  height: 50px;
+  
+}
+
+.nav-linkic img {
+  width: 30px; /* Adjust the width of the icons as needed */
+  height: 40px; /* Adjust the height of the icons as needed */
+  display: block;
+  margin: 0 auto;
+  
+}
+
+ 
+/* 
+/* //........ footert ........// */
+
+
+footer {
+    width: 100%;
+    background: var(--black);
+}
+
+.footer-container .content_1 img {
+    height: 25px;
+    width: 180px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0;
+
+
+   
+}
+
+.footer-container h4 {
+    color: var(--white);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.footer-container a {
+    display: block;
+    text-decoration: none;
+    color: var(--grey);
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.footer-container .content_1 p,
+.footer-container .content_4 p {
+    color: var(--grey);
+    margin: 25px 0;
+    font-size: 14px;
+    
+}
+
+.footer-container .content_4 input[type="email"] {
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+    outline: none;
+    padding: 15px 0;
+}
+
+.footer-container .content_4 .f-mail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.footer-container .content_4 .bx {
+    color: var(--white );
+}
+
+
+
+.f-design {
+    width: 100%;
+    color: var(--white);
+    text-align: center;
+}
+
+.f-design .f-design-txt {
+    border-top: 1px solid var(--grey);
+    padding: 25px 0;
+    font-size: 14px;
+    color: var(--grey);
+  
+}
+
+
+
+</style>
+
+<section style="height: 35px;"  class=" top-txt ">
+    <div class="head container ">
+        <div  class="head-txt ">
+           
+             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -50px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
+        </div>
+        <div class="sing_in_up ">
+            <!-- <a href="/login">SIGN IN</a>
+            <a href="/signup ">SIGN UP</a> -->
+        </div>
+    </div>
+</section>
+
+
+<nav style="height: 70px;" class="navbar">
+    <div  class="navbar-container">
+        <input type="checkbox" name="" id="checkbox">
+        <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+           
+        </div>
+        <nav  style="margin-top: 1px;"  class="navbar navbar-expand-lg .bg-light-subtle">
+            <div class="container-fluid"> 
+              <a class="navbar-brand" href="/"    style="color: rgb(0, 0, 0);margin-left: 60px;" > <b> R-MEN 'S</b></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-5 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"  style="margin-left: 60px;"><small>SUITS</small></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><small>SHIRTS</small></a>
+                  </li>
+                  <li  class="nav-item dropdown">
+                 <a class="nav-link"  href="#" >
+                   <small> TROUSERS</small> 
+                    </a>
+                    <!-- <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul> -->
+                  </li>                       
+                </ul>
+                <div class="find" style="margin-left: 20%;" >
+             <form style="width: 200% ;"  class="d-flex" role="search">
+            <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark" type="submit">Search</button> 
+          </form>
+        </div>
+              </div>
+            </div> 
+        
+      
+          </nav>
+         
+        <nav style="margin-left:330px;" class="navbaric">
+            <a href="#" class="nav-linkic"> <img  style="height: 35px;width: 35px;margin-top: 4px;margin-left: 5px;" src="/image/wishlistr icon.png"></a>
+            <a href="#" class="nav-linkic"><img  style="height: 30px;width: 30px;margin-top: 4px;" src="/image/profile icon.png"></a>
+            <a href="#" class="nav-linkic"> <img  style="height: 40px;width: 40px; "   src="/image/shopping-bag.png"></a>
+          </nav>
+    
+    </div>
+
+
+
+
+
+
+
+<div class="containerl" style="margin-top:-90px;margin-left: 150px;">
+    <h2   style="text-align: center;margin-top: 200px;margin-left: 240px;font-family: 'Open Sans', sans-serif;
+    font-family: 'Play', sans-serif;">Login</h2>
+        <p style="text-align: center;margin-left:230px ;color: red;font-size: large;"  style="color: red;" > <%=locals.alerting||locals.detailsalert||locals.emptyFieldslogin||locals.entry||locals.error%> </p>
+
+    <form action="/login" method="post">
+       <div class="form-group"   style="width: 500px;height: 60px;margin-left: 300px;margin-top: 30px;">
+         <!-- <label for="email">Email:</label> -->
+         <input  style="height: 50px;border-color: black;border-width: 4;" type="email" class="form-control" id="email" placeholder="Email" name="email">
+       </div>
+       <div class="form-groupp"  style="width: 500px;margin-left: 300px;">
+         <!-- <label for="pwd">Password:</label> -->
+         <input style="height: 50px;border-color: black;" type="password" class="form-control" id="pwd" placeholder="Password" name="password">
+
+       <a href="/forgotpage" style="color: #333;"><u>forgot your password?</u> </a>
+       </div>
+       <div  style="margin-left: 300px;">
+       
+       </div>
+       <button style="width: 500px;margin-left: 300px;margin-top: 20px;" type="submit" class="btn btn-dark">Sign in</button>
+           <p style="margin-left: 500px;"><a href="/signup" style="color: #333;"><u>Create Account</u> </a></p>
+          
+    </form>
+   </div>
+
+
+
+
+
+
+
+
+
+   <footer  style="margin-top: 50px;"  >
+    <div class="footer-container container-fluid  p-5">
+        <div class="content_1">
+            <!-- <img style="background-color: white;width: 30px;height: 30px;" src="/image/dice.png"> -->
+            <h style="color: white;"><mark  style="background-color:var(--grey);">R-MENS</mark></h> 
+            <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
+            <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+        </div>
+        <div class="content_2">
+            <h4>CUSTOMER SERVICE </h4>
+            <a href="#sellers">Delivery information</a>
+            <a href="#sellers">Return and Exchange</a>
+            <a href="#sellers">Contact Us</a>
+            <a href="#sellers">FAQS</a>
+        </div>
+
+
+        <div  style="float: right;"   class="content_3">
+            <h4>R MENS PRODUCTS</h4>
+            <a href="./contact.html">FORMAL SHIRTS</a>
+            <a href="https://payment-method-sb.netlify.app/" target="_blank"> PREMIUM SUITS</a>
+            <a href="https://delivery-status-sb.netlify.app/" target="_blank">TROUSERS</a>
+            <a href="https://codepen.io/sandeshbodake/full/Jexxrv" target="_blank">CLOTHING</a>
+        </div>
+
+
+
+        <div class="content_4">
+            <h4>FOLLOW US</h4>
+            <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+    
+            <div class="f-mail">
+                <input type="email" placeholder="Your Email">
+                <i class='bx bx-envelope'></i>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="f-design">
+        <div class="f-design-txt container">
+            <p  style="margin-left: 500px;">2024 R-MENS BUSINESS LTD  </p>
+        </div>
+    </div>
+</footer>
+
+    <%- include('footer')-%>  
+
+    

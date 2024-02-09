@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category</title>
+    <!-- Added Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Your existing CSS styles here */
+        /* Add any additional custom styles if needed */
+        .container {
+            margin-top: 50px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    
+      
+    <div class="container"> 
+        <h2 class="mt-4 mb-4">Edit Category <br>  <small><%=locals.message%></small>  </h2>
+            
+        <form id="editForm" action="/admin/updateCategory/<%= editData._id %>" method="POST">
+            <div class="form-group">
+                <label for="categoryName">Category Name:</label>
+                <input type="text" class="form-control" id="categoryName" name="categoryName" placeholder="Enter category name" value="<%= editData.categoryName %>">
+            </div>
+    
+            <div class="form-group">
+                <label for="categoryDescription">Category Description:</label>
+                <textarea class="form-control" id="categoryDescription" name="description" placeholder="Enter category description" rows="4"><%= editData.description %></textarea>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+    
+<!-- Bootstrap JS and Popper.js CDN for required functionality -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+ 

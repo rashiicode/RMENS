@@ -1,0 +1,1174 @@
+
+<%-include('header')-%>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+/* //........top text ........// */
+
+:root {
+    /* //....... Color ........// */
+    --primary-color: #ff3c78;
+    --light-black: rgba(0, 0, 0, 0.89);
+    --black: #000;
+    --white: #fff;
+    --grey: #aaa;
+}
+
+
+/* //........top text ........// */
+
+.top-txt {
+    background-color:rgb(245, 243, 243);
+    width: 100%;
+    
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.945);
+    padding: 10px 0;
+    font-size: 14px;
+    
+}
+
+.head a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.945);
+    margin: 0 10px;
+    
+}
+
+
+/* //........ Navbar ........// */
+
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+    display: none;
+}
+
+.navbar {
+    box-shadow: 0 5px 4px rgb(146 161 176 / 15%);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    color: var(--black);
+    z-index: 100;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+}
+
+.navbar img {
+    margin-left: 3rem;
+}
+
+.menu-itemss {
+   
+    display: flex;
+
+   
+}
+
+.menu-itemss li {
+    list-style: none;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.navbar-container ul a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 18px;
+    position: relative;
+}
+
+.navbar-container ul a:after {
+    content: "";
+    position: absolute;
+    background: var(--primary-color);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+.navbar-container ul a:hover:after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        opacity: 0.95;
+    }
+    .navbar-container input[type="checkbox"],
+    .navbar-container .hamburger-lines {
+        display: block;
+    }
+    .navbar-container {
+        display: block;
+        position: relative;
+        height: 64px;
+    }
+    .navbar-container input[type="checkbox"] {
+        position: absolute;
+        display: block;
+        height: 32px;
+        width: 30px;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .navbar-container .hamburger-lines {
+        display: block;
+        height: 28px;
+        width: 35px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .navbar-container .hamburger-lines .line {
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #333;
+    }
+    .navbar-container .hamburger-lines .line1 {
+        transform-origin: 0% 0%;
+        transition: transform 0.3s ease-in-out;
+    }
+    .navbar-container .hamburger-lines .line2 {
+        transition: transform 0.2s ease-in-out;
+    }
+    .navbar-container .hamburger-lines .line3 {
+        transform-origin: 0% 100%;
+        transition: transform 0.3s ease-in-out;
+    }
+    .navbar .menu-itemsss {
+        padding-top: 100px;
+        background: #fff;
+        height: 100vh;
+        max-width: 100%;
+        transform: translate(-150%);
+        display: flex;
+        flex-direction: column;
+        /* margin-left: -40px;
+        padding-left: 40px; */
+        text-align: center;
+        transition: transform 0.5s ease-in-out;
+        /* box-shadow: 5px 0px 10px 0px #aaa; */
+        overflow: scroll;
+    }
+   
+    .menu-itemss li,
+    .navbar img {
+        margin: 0;
+    }
+    .navbar .menu-items li:nth-child(1) {
+        margin-top: 1.5rem;
+    }
+    .navbar-container .logo img {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        margin-top: 8px;
+    }
+    .navbar-container input[type="checkbox"]:checked~.menu-itemss{
+        transform: translateX(0);
+    }
+    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+        transform: rotate(45deg);
+    }
+    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+        transform: scaleY(0);
+    }
+    .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+        transform: rotate(-45deg);
+    }
+    .navbar-container input[type="checkbox"]:checked~.home_page img {
+        display: none;
+        background: #fff;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar-container input[type="checkbox"]:checked~.navbar-container img {
+        display: none;
+    }
+}
+
+
+/* //........ Home ........// */
+
+.home_page img {
+    height: auto;
+    width: 100%;
+    background-position: center;
+    position: relative;
+    background-size: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.home_txt {
+    position: absolute;
+    top: 37%;
+    left: 5%;
+}
+
+.home_txt p {
+    color: var(--primary-color);
+    font-weight: 600;
+    padding-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+.home_txt h2 {
+    font-size: 2.6rem;
+    font-weight: 500;
+    line-height: 53px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: var(--light-black);
+}
+
+.home_txt .home_label p {
+    color: grey;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.home_txt a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.home_txt button {
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 15px 30px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.home_txt .bx-right-arrow-alt {
+    font-size: 25px;
+    padding-left: 5px;
+}
+
+.home_txt .home_social_icons a {
+    text-decoration: none;
+    color: var(--light-black);
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+
+/* //........ Collections ........// */
+
+.collections {
+    display: flex;
+
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 65px;
+
+}
+
+.content {
+    width: 400px;
+    height: 500px;
+    margin: 10px;
+    position: relative;
+    left: 10px;
+}
+
+.content::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: rgba(210, 210, 210, 0.685);
+    z-index: 2;
+    opacity: 0;
+}
+
+.content:hover::after {
+    opacity: 1;
+}
+
+.content img {
+    width: 100%;
+    height: 500px;
+    box-shadow: 0 14px 28px rgba(155, 160, 155, 0.196), 0 10px 10px rgba(255, 250, 250, 0.352);
+}
+
+.img-content {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+    color: var(--white);
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: initial;
+    z-index: 5;
+    opacity: 0;
+}
+
+.img-content p {
+    font-size: 1.6rem;
+}
+
+.img-content button {
+    border: none;
+    background-color:gainsboro;
+    color: var(--white);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.img-content a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #fff;
+    transition: 0.3s;
+}
+
+
+
+
+
+.img-content a:hover {
+    color:gray
+}
+
+.content:hover .img-content {
+    opacity: 1;
+    top: 50%;
+}
+
+
+/* //........ Content 2 ........// */
+
+.content2 {
+    width: 400px;
+    margin: 10px;
+    position: relative;
+}
+
+.content2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: rgba(210, 210, 210, 0.685);
+    z-index: 2;
+    opacity: 0;
+}
+
+.content2:hover::after {
+    opacity: 1;
+}
+
+.content2 img {
+    width: 100%;
+    height: 400px;
+    box-shadow: 0 14px 28px rgba(155, 160, 155, 0.196), 0 10px 10px rgba(255, 250, 250, 0.352);
+}
+
+.img-content2 {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+    color: var(--white);
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: initial;
+    z-index: 5;
+    opacity: 0;
+}
+
+.img-content2 p {
+    font-size: 1.6rem;
+}
+
+.img-content2 a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.img-content2 button {
+    border: none;
+    background-color:gainsboro;
+    color: var(--white);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.img-content2 button:hover {
+    background: var(--white);
+    color:#aaa
+}
+
+.img-content2 button:hover~.img-content2 a {
+    color: var(--primary-color);
+}
+
+.img-content2 a:hover {
+    color:gray
+}
+
+.content2:hover .img-content2 {
+    opacity: 1;
+    top: 50%;
+}
+
+
+/* //........ Content 3 ........// */
+
+.content3 {
+    width: 400px;
+    margin: 10px;
+    position: relative;
+}
+
+.content3::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: rgba(210, 210, 210, 0.685);
+    z-index: 2;
+    opacity: 0;
+}
+
+.content3:hover::after {
+    opacity: 1;
+}
+
+.content3 img {
+    width: 100%;
+    height: 400px;
+    box-shadow: 0 14px 28px rgba(155, 160, 155, 0.196), 0 10px 10px rgba(255, 250, 250, 0.352);
+}
+
+.img-content3 {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+    color: var(--white);
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: initial;
+    z-index: 5;
+    opacity: 0;
+}
+
+.img-content3 p {
+    font-size: 1.6rem;
+}
+
+.img-content3 a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.img-content3 button {
+    border: none;
+    background-color:#ddd;
+    color: var(--white);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.img-content3 button:hover {
+    background: var(--white);
+    color:gainsboro
+}
+
+.img-content3 button:hover~.img-content3 a {
+    color:rgb(39, 112, 59)
+}
+
+.img-content3 a:hover {
+    color:gray
+}
+
+.content3:hover .img-content3 {
+    opacity: 1;
+    top: 50%;
+}
+
+.content3:hover .img-content3 {
+    opacity: 1;
+    top: 50%;
+}
+
+/* fitting 2 div*/
+
+ /* Adjust the height as needed */
+
+
+
+/* rs
+
+
+/* //........ seller  ........// */
+
+
+
+.seller h2 {
+    margin-top: 65px;
+    margin-bottom: 20px;
+}
+
+.seller .best-p1 {
+    width: 250px;
+    height: 370px; 
+
+ }
+
+.seller .best-p1 img {
+    height: 250px;
+    width: 250px;
+}
+
+
+
+
+
+
+/* //........ deal of week ........// */
+
+
+
+/* //........ Footer ...... // */
+
+footer {
+    width: 100%;
+    background: var(--black);
+}
+
+.footer-container .content_1 img {
+    height: 25px;
+    width: 180px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0;
+
+
+   
+}
+
+.footer-container h4 {
+    color: var(--white);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.footer-container a {
+    display: block;
+    text-decoration: none;
+    color: var(--grey);
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.footer-container .content_1 p,
+.footer-container .content_4 p {
+    color: var(--grey);
+    margin: 25px 0;
+    font-size: 14px;
+    
+}
+
+.footer-container .content_4 input[type="email"] {
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+    outline: none;
+    padding: 15px 0;
+}
+
+.footer-container .content_4 .f-mail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container .content_4 .bx {
+    color: var(--white);
+}
+
+.f-design {
+    width: 100%;
+    color: var(--white);
+    text-align: center;
+}
+
+.f-design .f-design-txt {
+    border-top: 1px solid var(--grey);
+    padding: 25px 0;
+    font-size: 14px;
+    color: var(--grey);
+  
+}
+
+
+/* //........ contact ...... // */
+.lastformat{
+    height: 250px  ;
+    width: 500px
+    background-color rgba(246, 246, 246, 0.896);
+   
+
+}
+.lastform{
+    margin-left: 400px;
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+}
+
+/* //....... Media Queries .......// */
+
+@media (max-width: 500px) {
+    .head {
+        display: none;
+    }
+    .top-txt .head p,
+    .top-txt .head a {
+        font-size: 10px;
+    }
+    .home_txt h2,
+    .home_txt .home_label p {
+        display: none;
+    }
+    .home_txt {
+        position: absolute;
+        top: 20%;
+        left: 5%;
+        font-size: 12px;
+    }
+    .home_txt button {
+        padding: 7px 7px;
+        font-size: 10px;
+    }
+    .home_txt i {
+        display: none;
+    }
+    .home_txt .home_social_icons {
+        /* display: flex; */
+        display: none;
+    }
+    .menu-items {
+        margin-right: 0;
+    }
+    .best-seller {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .l-news {
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+    }
+    .l-news .l-news1,
+    .l-news .l-news2 {
+        margin-bottom: 200px;
+    }
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-container .content_1 {
+        margin-bottom: 30px;
+    }
+    .best-seller img {
+        padding-top: 40px;
+    }
+}
+
+@media(min-width: 501px) and (max-width: 768px) {
+    .head {
+        display: none;
+    }
+    .top-txt .head p,
+    .top-txt .head a {
+        font-size: 10px;
+    }
+    .home_txt h2,
+    .home_txt .home_label p {
+        display: none;
+    }
+    .home_txt {
+        position: absolute;
+        top: 20%;
+        left: 5%;
+        font-size: 12px;
+    }
+    .home_txt button {
+        padding: 7px 7px;
+        font-size: 10px;
+    }
+    .home_txt i {
+        display: none;
+    }
+    .home_txt .home_social_icons {
+        /* display: flex; */
+        display: none;
+    }
+    .menu-items {
+        margin-right: 0;
+    }
+    .best-seller {
+        display: flex;
+        flex-direction: column;
+    }
+    .l-news {
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+    }
+    .l-news .l-news1,
+    .l-news .l-news2 {
+        margin-bottom: 200px;
+    }
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-container .content_1 {
+        margin-bottom: 30px;
+    }
+    .best-seller img {
+        padding-top: 40px;
+    }
+}
+
+@media(orientation: landscape) and (max-height: 500px) {
+    .header {
+        height: 90vmax;
+    }
+}
+
+
+/* //....... Media Queries For Contact .......// */
+
+@media (max-width: 500px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+    .form .form-details button {
+        margin-left: 0;
+    }
+    .form .form-details input[type="text"],
+    .form .form-details input[type="email"],
+    .form .form-details textarea {
+        width: 100%;
+        margin-left: 0;
+    }
+    .form .form-details input[type="text"] {
+        margin-bottom: 0px;
+    }
+}
+
+@media(min-width: 501px) and (max-width: 768px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+    .form .form-details button {
+        margin-left: 0;
+    }
+    .form .form-details input[type="text"],
+    .form .form-details input[type="email"],
+    .form .form-details textarea {
+        width: 100%;
+        margin-left: 0;
+    }
+    .form .form-details input[type="text"] {
+        margin-bottom: 0px;
+    }
+}
+
+.nav-linkic {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  height: 50px;
+  
+}
+
+.nav-linkic img {
+  width: 20px; /* Adjust the width of the icons as needed */
+  height: 40px; /* Adjust the height of the icons as needed */
+  display: block;
+  margin: 0 auto;
+  
+}
+
+ 
+/*vido infront text */
+
+.video-container {
+        position: relative;
+    }
+
+    .video-text {
+        color: black;
+        text-align: center;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    video {
+        width: 100%;
+        z-index: 0;
+    }
+
+    .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.box {
+  padding: 0px;
+  box-sizing: border-box;
+  margin-top: 120px;
+  width: 400%;
+}
+
+.box1 {
+  background-color: rgba(226, 232, 235, 0.858);
+  
+
+ 
+}
+
+
+
+.box2 {
+  /* background-color: lightgreen; */
+  margin-left: 0px;
+  width: 100%;
+}
+
+
+.containerthree { display: flex; 
+    justify-content: space-between; 
+margin-top: -110px;
+
+}
+
+
+.containerlast { display: flex; 
+    justify-content: space-between; 
+margin-top: -110px;
+
+}
+.boxlast{
+  text-align: center;
+}
+
+
+/* .box { 
+    width: 30%; 
+    border: 1px solid black;
+     padding: 20px; 
+     box-sizing: border-box;
+ } */
+
+
+ .full-width { width: 100%;
+    margin-top: 150px;
+    height: 200px;
+     background-color: rgba(246, 246, 246, 0.896);
+     }
+
+
+</style>
+
+
+        <section style="height: 50px;"  class=" top-txt ">
+            <div class="head container ">
+                <div  class="head-txt ">
+             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -400px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
+                </div>
+                <div class="d-flex">
+                   
+                    <a href="/logout" style="color: #000;margin-left: 600px;"><u>LOGOUT</u><br>   </a>
+                    <a href="/logout" style="color: #000;position: absolute;left: 1200px;"><br><p style="color: #000;"><u> Account  | <%= username %></u></p> </a>
+
+                   
+
+                        
+                </div>
+            </div>
+        </section>
+
+        <nav style="height: 70px;" class="navbar">
+            <div  class="navbar-container">
+                <input type="checkbox" name="" id="checkbox">
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                   
+                </div>
+                <nav  style="margin-top: 1px;"  class="navbar navbar-expand-lg .bg-light-subtle">
+                    <div class="container-fluid"> 
+                      <a class="navbar-brand" href="/"    style="color: rgb(0, 0, 0);margin-left: 60px;" > <b> R-MEN 'S</b></a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-5 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/suits"  style="margin-left: 60px;"><small>SUITS</small></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/shirts"><small>SHIRTS</small></a>
+                          </li>
+                          <li  class="nav-item dropdown">
+                         <a class="nav-link"  href="/pants" >
+                           <small> TROUSERS</small> 
+                            </a>
+                            <!-- <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul> -->
+                          </li>                       
+                        </ul>
+                        <div class="find" style="margin-left: 20%;" >
+                     <form style="width: 200% ;"  class="d-flex" role="search">
+                    <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-dark" type="submit">Search</button> 
+                  </form>
+                </div>
+                      </div>
+                    </div> 
+                
+              
+                  </nav>
+                 
+              
+
+                <nav style="margin-left:300px;" class="navbaric">
+                    <a href="/wishlist" class="nav-linkic"> <img  style="height: 35px;width: 35px;margin-top: 4px;margin-left: 5px;" src="/image/wishlistr icon.png"></a>
+                    <a href="/login" class="nav-linkic"><img  style="height: 30px;width: 30px;margin-top: 4px;" src="/image/profile icon.png"></a>
+                    <a href="/cart" class="nav-linkic"> <img  style="height: 40px;width: 40px; "   src="/image/shopping-bag.png"></a>
+                  </nav>
+            
+            </div>
+        </nav>
+        <section id="home">
+            <div class="home_page ">
+                <div class="home_img ">
+                    <div class="video-container">
+                        <p class="video-text"  style="text-align: center;">
+                            MIX AND MATCH OUR  BRAND<br>
+                            <br>
+                           Casual shirts,polos,and formal shirts.
+                           <br>Readying your rotation for everywhere.
+                           <br>
+                           <br><a  style="color: #000;" href=""><u> SHOP  NOW</u></a>
+
+                        </p>
+                        <video autoplay muted loop>
+                            <source src="/video/4780993b279a4f899baa9c0c4f9b32db.mp4" type="video/mp4">
+                        </video>
+        </section>
+
+        
+        <section id="collection" style="height: 500px;">
+            <div class="collections container-fluid" >
+                <div class="content">
+                    <img src="/image/JACKET_62822_032.webp" alt="img" />
+                    <div class="img-content">
+                        <p>SUITS</p>
+                        <a href="/suits">SHOP NOW</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="/image/M-TML069-004-SC.CL_2.webp" alt="img" />
+                    <div class="img-content">
+                        <p>SHIRTS</p>
+                        <a href="/shirts">SHOP NOW</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="/image/trouser 3s.webp" alt="img" />
+                    <div class="img-content">
+                        <p>TROUSERS</p>
+                        <a href="/pants">SHOP NOW</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+   
+        <div class="container">
+            <div class="box box1 " style="width: 100%;margin-right: 60px;text-align: center;"><p  style="margin-top: 350px;"><b>FITTING  TRUSTED PREMIUM BRAND </b><br><br><b>EXCLUSIVE LIMITED COLLECTIONS ARE OUR UNIQUE IDENTITY</b><br><br><a  href="#"><u><b s>EXPLORE</b> </u> </a>  </p> </div>
+            <div class="box box2 " ><img  style="width: 100%;height: 100%;margin-right: 60px;" src="/image/JACKET_62822_252.webp"></div>
+          </div> 
+
+
+
+          <div class="full-width" >
+            <p style="text-align: center;padding-top: 50px;">  <a style="margin-top: 50px;"> <b>LOOK OF The Week</b><br> <br>PREMIUM THINGS MAKE PREMIUM FEEL<br>For when you've got desk-to-dinner plans.  </p> </a></div>
+
+
+
+
+          <div class="containerthree"  > 
+            <div class="box box11"> <img style="width: 100%;" src="/image/mens coat blue light blue 4.webp"> </div>
+           <div class="box box22"> <img style="width: 100%;" src="/image/mens coat blue white main.webp">  </div> 
+           <div class="box box33"> <img style="width: 100%;" src="/image/WASTCOAT_62874_034.webp">  </div>
+         </div>
+
+
+         <div class="containerlast"  > 
+            <div class="box boxlast"><h  >Italian Dark Blue Light Feather Premium Touch</h><br><br>Rs.8000  </div>
+           <div class="box boxlast"> <h>Iconic Blue Ash Sky Light Premium</h><br><br>Rs.7500  </div> 
+           <div class="box boxlast"><h>Black Linked With creamy Texture Premium</h> <br><br>Rs. 50000  </div>
+         </div>
+
+
+    
+        
+        <section id="contact">
+            <div class="contact container">
+            <!-- <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.121169986175!2d73.90618951442687!3d18.568575172551647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c131ed5b54a7%3A0xad718b8b2c93d36d!2sSky%20Vista!5e0!3m2!1sen!2sin!4v1654257749399!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div> -->
+            <form action="https://formspree.io/f/xzbowpjq" method="POST">
+            
+
+                    <div class="lastformat"  >
+                        <p  style="text-align: center;margin-left: 400px;margin-top: 80px;"><b> STAY IN TOUCH</b><br><br> <small> Get 10% off your first order, and we'll keep you posted on latest releases, exclusive offers, sales, and more</small> </p>
+                        <input class="lastform"  type="text"  placeholder="   Email                                                                          >"  >
+                        
+                    </div>
+
+
+            </form>
+        </div>
+        </section>
+        <footer>
+            <div class="footer-container container-fluid   p-5">
+                <div class="content_1">
+                    <!-- <img style="background-color: white;width: 30px;height: 30px;" src="/image/dice.png"> -->
+                    <h style="color: white;"><mark  style="background-color:var(--grey);">R-MENS</mark></h> 
+                    <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
+                    <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+                </div>
+                <div class="content_2">
+                    <h4>CUSTOMER SERVICE </h4>
+                    <a href="#sellers">Delivery information</a>
+                    <a href="#sellers">Return and Exchange</a>
+                    <a href="#sellers">Contact Us</a>
+                    <a href="#sellers">FAQS</a>
+                </div>
+
+
+
+
+
+                <div  style="float: right;"   class="content_3">
+                    <h4>R MENS PRODUCTS</h4>
+                    <a href="./contact.html">FORMAL SHIRTS</a>
+                    <a href="https://payment-method-sb.netlify.app/" target="_blank"> PREMIUM SUITS</a>
+                    <a href="https://delivery-status-sb.netlify.app/" target="_blank">TROUSERS</a>
+                    <a href="https://codepen.io/sandeshbodake/full/Jexxrv" target="_blank">CLOTHING</a>
+                </div>
+
+
+
+                <div class="content_4">
+                    <h4>FOLLOW US</h4>
+                    <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+            
+                    <div class="f-mail">
+                        <input type="email" placeholder="Your Email">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="f-design">
+                <div class="f-design-txt container">
+                    <p  style="margin-left: 500px;">2024 R-MENS BUSINESS LTD  </p>
+                </div>
+            </div>
+        </footer>
+ <%-include('footer')-%> 
+
