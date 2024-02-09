@@ -173,11 +173,15 @@ res.render("user/login")
             }
         });
 
-        await userData.save();
+
+        //
+
+       
 
         // Send OTP via email
         await sendOtpEmail(email, otpCode);
 
+ await userData.save();
         // Store email in session for OTP verification
         req.session.verifyEmail = email;
 
@@ -425,14 +429,21 @@ const confirmPageget=(req,res)=>{
 
 
 
-const suits= (req,res)=>{
+const suits=async (req,res)=>{
   // console.log(req.session.user)
   //   if(req.session.user){
   //  return   res.render("user/suits")
   //   }else{
   //     res.redirect("/login")
   //   } 
-  res.render("user/suits")
+  const productList = await productCollection.find();     
+     
+  return res.render("user/suits",{productList});
+
+
+
+
+
    }
    
     const shirts= async (req,res)=>{
@@ -440,7 +451,7 @@ const suits= (req,res)=>{
       //     try{
       //   if(req.session.user){
           
-      const productList = await productCollection.find();
+      const productList = await productCollection.find();     
      
          return res.render("user/shirts",{productList});
         // }else{
@@ -455,14 +466,17 @@ const suits= (req,res)=>{
         // }
         
   
-    const pants= (req,res)=>{
+    const pants=async (req,res)=>{
   
       // if(req.session.user){
       //   res.render("user/pants")
       // }else{
       //   res.render("user/home")
       // } 
-      res.render("user/pants")
+      const productList = await productCollection.find();     
+     
+      return res.render("user/pants",{productList});
+    
       
       }
        

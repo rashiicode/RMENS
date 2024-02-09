@@ -279,9 +279,8 @@ const productDetails=async (req,res)=>{
 
 
 const productDetailsPost = async (req,res)=>{
-    
+   
 
- 
  }
 
 const addcategory = async(req,res)=>{
@@ -438,28 +437,30 @@ const ProductEditGet=async (req,res)=>{
     }
  };
 
-const producEditPostPassed = async (req,res) => {
+ const producEditPostPassed = async (req, res) => {
     try {
-        const _id= req.params.id;
-        console.log("t",_id);
+        const _id = req.params.id;
+        console.log("t", _id);
 
-        const {  Name, category, price, rating, stock, brand, colour, description } = req.body;
-        console.log(  Name, category, price, rating, stock, brand, colour, description,req.files);
+        const { Name, category, price, rating, stock, brand, colour, description } = req.body;
+        console.log(Name, category, price, rating, stock, brand, colour, description, req.files);
 
-        const productedit= await productCollection.findOne({ Name: Name });
-        const  categoryExist=await categoryCollection.find()
-        console.log("ii exist  cheqqqq");
+        const productedit = await productCollection.findOne({ Name: Name });
+        const categoryExist = await categoryCollection.find();
+        console.log("ii exist check");
         console.log(productedit);
 
-        if (productedit) {
-            const errormeg = 'product with this name already exists';
-           return res.render('admin/productEdit', { errormeg,productedit,categoryExist});
+        if (productedit && productedit._id.toString() !== _id) {
+            const errormeg = 'Product with this name already exists';
+            return res.render('admin/productEdit', { errormeg, productedit, categoryExist });
         }
-        let images
-        if (req.files) {
+
+        let images = [];
+        if (req.files && req.files['images[]']) {
             images = req.files['images[]'].map(file => file.path);
             console.log(images);
         }
+
         const updatedProduct = await productCollection.findByIdAndUpdate(
             _id,
             {
@@ -475,12 +476,12 @@ const producEditPostPassed = async (req,res) => {
             },
             { new: true }
         );
-            console.log(updatedProduct)
-        return res.redirect('/admin/product'); 
-        // console.log(error.message);
-        res.status(500).send('Internal Server Error');
-    }catch(error){
+
+        console.log(updatedProduct);
+        return res.redirect('/admin/product');
+    } catch (error) {
         console.log(error.message);
+        res.status(500).send('Internal Server Error');
     }
 };
 

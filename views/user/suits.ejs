@@ -341,7 +341,7 @@ footer {
     <div class="head container ">
         <div  class="head-txt ">
            
-             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -50px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
+            <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: 10px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
         </div>
         <div class="sing_in_up ">
             <!-- <a href="/login">SIGN IN</a>
@@ -357,20 +357,20 @@ footer {
     
         <nav  style="margin-top: 1px;"  class="navbar navbar-expand-lg .bg-light-subtle">
             <div class="container-fluid"> 
-                <a class="navbar-brand" href="/landing"    style="color: rgb(0, 0, 0);margin-left: 60px;" > <b> R-MEN 'S</b></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-5 mb-lg-0">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="/suits"  style="margin-left: 60px;"><small>SUITS</small></a>
-                  </li>
+              <a class="navbar-brand" href="/landing"    style="color: rgb(0, 0, 0);margin-left: 60px;" > <b> R-MEN 'S</b></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-5 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" href="/shirts"><small>SHIRTS</small></a>
-                  </li>
-                  <li  class="nav-item dropdown">
-                 <a class="nav-link"  href="/pants" >
+                    <a class="nav-link active" aria-current="page" href="/suits"  style="margin-left: 60px;"><small>SUITS</small></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/shirts"><small>SHIRTS</small></a>
+                </li>
+                <li  class="nav-item dropdown">
+               <a class="nav-link"  href="/pants" >
                  <small> TROUSERS</small> 
                   </a>
                     <!-- <ul class="dropdown-menu">
@@ -407,159 +407,45 @@ footer {
 
 
 
-    <section id="sellers">
+ <!-- Assuming this is your shirts EJS file -->
 
-        <div class="seller container" >
-
-
-            <div class="full-width"  style="width: 200%;margin-left: 250px;">
-                <p style="text-align: center;padding-top: 20px;">  <a style="margin-top: 10px;"> <b>LOOK OF The Week</b><br> <br>PREMIUM THINGS MAKE PREMIUM FEEL<br>For when you've got desk-to-dinner plans.</p> </a>
-            </div>
-
-            <h2>SUITS</h2>
-
-        
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+<section id="sellers"   >
+   
 
 
 
-    <div class="best-seller">
-        <img src="/image/JACKET_58727_005.webp">
-        <img src="/image/JACKET_62822_032.webp">
-        <img src="/image/mens coat blue light blue 2.webp">
-        <img src="/image/JACKET_58727_038.webp">
-    </div>
 
- 
-             
-                <div class="best-p1">
-                    
-                  
-    
-    
+                <div class="container-fluid " >
+                    <div class="row mt-2 prtlistcontainer">
+                        <% productList.forEach(product => { %>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 mt-3">
+                                <div class="card ">
+                                    <div class="card-img">
+                                        <img src="<%= product.images[0].slice(6)%>" class="card-img-top " alt="..." style="margin-left: 0px;">
+                                    </div>
+                                    <div class="card-body">
+                     <p><%=product.Name%> </p>
+                                        <p><%= product.productName%></p>
+                                        <p>Rs: <%= product.price%></p>
+                                        <% if (product.isStatus) { %>
+                                            <a href="/productDetail/<%= product._id %>"><button type="button" class="btn btn-dark">Buy Now</button></a>
+                                         
+                                        <% } else{%>
+
+                                       <p  style="background-color: red;color: white;">Product currently unavailable</p>
+
+                                        <%} %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
                     </div>
                 </div>
-                <div class="best-p1">
-                
-    
-    
-                </div>
-                <div class="best-p1">
-                    
-    
-    
-    
-                </div>
-            </div>
-        </div>
-        <div class="seller container">
-             <div class="full-width"  style="width: 200%;margin-left: 250px;">
-                <p style="text-align: center;padding-top: 20px;">  <a style="margin-top: 10px;"> <b>LOOK OF The Week</b><br> <br>PREMIUM THINGS MAKE PREMIUM FEEL<br>For when you've got desk-to-dinner plans.</p> </a>
-            </div>
-
-            <h2>SHIRTS</h2>
-           
-
-            <div class="best-seller">
-                <img src="/image/JACKET_58727_005.webp">
-                <img src="/image/JACKET_62822_032.webp">
-                <img src="/image/mens coat blue light blue 2.webp">
-                <img src="/image/JACKET_58727_038.webp">
-                </div>
             
-                <div class="description-container">
-                    <p>red fair its not fre casual premium brand</p>
-                    <p style="margin-left: 80px;">red fair its not fre casual premium brand</p>
-                    <p style="margin-left: 80px;">red fair its not fre casual premium brand</p>
-                    <p style="margin-left: 80px;"  >red fair its not fre casual premium brand</p>
-                </div>
-                        
-    
-    
-                </div>
-                <div class="best-p1">
-                   
-    
-    
-    
-                </div>
-                <div class="best-p1">
-                  
-    
-    
-    
-                </div>
-                <div class="best-p1">
-                   
-    
-    
-    
-    
-                </div>
-            </div>
-        </div>
-        <div class="seller container">
-            
-            <div class="full-width"  style="width: 200%;margin-left: 250px;">
-                <p style="text-align: center;padding-top: 20px;">  <a style="margin-top: 10px;"> <b>LOOK OF The Week</b><br> <br>PREMIUM THINGS MAKE PREMIUM FEEL<br>For when you've got desk-to-dinner plans.</p> </a>
-            </div>
-            <h2>TROUSERS</h2>
 
 
-            <div class="best-seller">
-                <img src="/image/JACKET_58727_005.webp">
-                <img src="/image/JACKET_62822_032.webp">
-                <img src="/image/mens coat blue light blue 2.webp">
-                <img src="/image/JACKET_58727_038.webp">
-            </div>
-        
-            <div class="description-container">
-                <p>red fair its not fre casual premium brand</p>
-                <p style="margin-left: 80px;">red fair its not fre casual premium brand</p>
-                <p style="margin-left: 80px;">red fair its not fre casual premium brand</p>
-                <p style="margin-left: 80px;"  >red fair its not fre casual premium brand</p>
-            </div>
-                    
-
-    
-    
-    
-    
-                </div>
-                <div class="best-p1">
-                    
-    
-    
-    
-                </div>
-                <div class="best-p1">
-                   
-    
-    
-    
-    
-                </div>
-                <div class="best-p1">
-                 
-    
-    
-    
-    
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
-    
-
+    <!-- Additional sections or product categories go here -->
+</section>
 
 
 
@@ -594,7 +480,7 @@ footer {
         </div>
 
 
-
+        
         <div class="content_4">
             <h4>FOLLOW US</h4>
             <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>

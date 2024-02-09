@@ -341,7 +341,7 @@ footer {
     <div class="head container ">
         <div  class="head-txt ">
            
-             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -50px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
+            <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: 10px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
         </div>
         <div class="sing_in_up ">
             <!-- <a href="/login">SIGN IN</a>
@@ -409,13 +409,13 @@ footer {
 
  <!-- Assuming this is your shirts EJS file -->
 
-<section id="sellers">
+<section id="sellers"   >
    
 
 
 
 
-                <div class="container-fluid ">
+                <div class="container-fluid " >
                     <div class="row mt-2 prtlistcontainer">
                         <% productList.forEach(product => { %>
                             <div class="col-4 col-sm-4 col-md-4 col-lg-4 mt-3">
@@ -424,15 +424,15 @@ footer {
                                         <img src="<%= product.images[0].slice(6)%>" class="card-img-top " alt="..." style="margin-left: 0px;">
                                     </div>
                                     <div class="card-body">
-                                        <p><%=product.Name%> </p>
+                     <p><%=product.Name%> </p>
                                         <p><%= product.productName%></p>
-                                        <p><%= product.price%></p>
+                                        <p>Rs: <%= product.price%></p>
                                         <% if (product.isStatus) { %>
-                                            <a href="/productDetail/<%= product._id %>"><button type="button" class="btn btn-primary">Buy Now</button></a>
+                                            <a href="/productDetail/<%= product._id %>"><button type="button" class="btn btn-dark">Buy Now</button></a>
                                          
                                         <% } else{%>
 
-                                       <p>Product currently unavailable</p>
+                                       <p  style="background-color: red;color: white;">Product currently unavailable</p>
 
                                         <%} %>
                                     </div>
