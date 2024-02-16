@@ -216,18 +216,110 @@
 
  
 /* 
-/* //........ footert ........// */
+/* //........ css of profile ........// */
+body {
+    margin: 0;
+    padding-top: 40px;
+    color: #2e323c;
+    background: #f5f6fa;
+    position: relative;
+    height: 100%;
+}
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #9fa8b9;
+}
+.account-settings .about {
+    margin: 2rem 0 0 0;
+    text-align: center;
+}
+.account-settings .about h5 {
+    margin: 0 0 15px 0;
+    color: #454a4e;
+}
+.account-settings .about p {
+    font-size: 0.825rem;
+}
+.form-control {
+    border: 1px solid #cfd1d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: #ffffff;
+    color: #2e323c;
+}
+
+.card {
+    background: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+
+/* table for addres listing  */
+table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
 
 
 
+        /* edit delete a link */
 
+       .address{
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      padding: 5px 10px;
+      width: 100px;
+      background-color:#01080c;
+      color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      
+    }
+
+    .address:hover {
+      background-color: #6da0d7;
+    }
 </style>
 
-<section style="height: 35px;"  class=" top-txt ">
+<section style="height: 35px;margin-top: -38px;"  class=" top-txt ">
     <div class="head container ">
         <div  class="head-txt ">
            
-             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -50px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
+             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -200px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
         </div>
         <div class="sing_in_up ">
             <!-- <a href="/login">SIGN IN</a>
@@ -281,7 +373,7 @@
               </div>
             </div> 
         
-      
+       
           </nav>
          
       
@@ -297,56 +389,122 @@
 
 
 
-
-
  
-<div class="containerl" style="margin-top:-90px;margin-left: 150px;">
-    <h2   style="text-align: center;margin-top: 200px;margin-left: 250px;font-family: 'Open Sans', sans-serif;
-    font-family: 'Play', sans-serif;">Forgot Verification<br><small style="color: red;"><%=locals.emptyFieldsforgot%></small></h2>
-  
-    <form action="/forgetOtp" method="post">
-       
-       <div class="form-groupp"  style="width: 500px;margin-left: 300px;">
-         <!-- <label for="pwd">Password:</label> -->
-         <input style="height: 50px;border-color: black;" type="text" class="form-control" id="pwd" placeholder="email address" name="email">
 
-        
-       </div>
-       <div  style="margin-left: 300px;"> 
-        
-            
-      
-       </div>
-       <button style="width: 500px;margin-left: 300px;margin-top: 20px;margin-bottom: 200px;" type="submit" class="btn btn-dark">Submit</button>
-       
-    </form>
+ <!-- profile  -->
+ <div class="container-fluid"  style="margin-top: 50px;margin-bottom: 50px;">
+    <div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="account-settings">
+                <div class="user-profile">
+                    <div class="user-avatar"  style="margin-right: 50px;">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                    </div>
+                    <h5 class="user-name" style="margin-right: 20px;">  Muhammed rashid</h5>
+                    <h6 class="user-email"  style="margin-right: 20px;">rashiiiii</h6>
+                </div>
+                <div class="about" >
+                    <h5>About</h5>
+
+                    <form action="/orderDetail"  >
+                        <button type="submit" style="width: 300px;height: 30px;margin-top: 10px;background-color:#fff">Order Details</button>
+
+                    </form>
+                    <form action="/profile">
+                        <button style="width: 300px;height: 30px;margin-top: 10px;" >profile Details</button>
+
+                    </form>
+
+                    <form action="/editProfile">
+                        <button   style="width: 300px;height: 30px;margin-top: 10px;background-color:#fff"">Manage Details</button>
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
     </div>
+    </div>
+
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"     style="display: flex;">
+                    <h6 class="mb-2 text-dark  mb-5">Personal Details</h6>
+                    <form action="/addProfile">
+                        <button  style="width: 200px;height: 30px;margin-left: 600px;margin-top: 1px;background-color: #000000f6;color: #fff;border-radius: 8px;"  >ADD NEW</button>
+
+                    </form>
+                </div>
+                <div  style="background-color: rgb(1, 12, 16);width: 300px;height: 100px;">
+                    <div class="form-group" style="color: rgb(241, 235, 235);text-align: center;">
+                
+                        <h3 ><%=profilemain.name %></h3  >
+                            <h4  style="font-size: medium;"><%=profilemain.email %></h4  >
+                                
  
+                    </div>
+                    
+                </div>
+                <% if (addressexist===null) { %>
+                   
 
-   <script>
-  const timer = document.getElementById('timer');
-  const resendBtn = document.getElementById('resendButton');
+                    <p>Address is null</p>
+                <% }else {%>
 
-  let timeLeft = 10; // Set the timer duration in seconds
+         
+                    <% addressexist.address.forEach(address => { %>
+        
+                        <div style="margin-right: 40px;margin-top: 20px; padding: 10px; border: 1px solid #01080c; border-radius: 8px;width: 700px;">
+                            <p><strong>Street:</strong> <%= address.street %></p>
+                             <p><strong>Phone Number:</strong> <%= address.phonenumber %></p>
+                            <p><strong>City:</strong> <%= address.city %></p>
+                            <p><strong>State:</strong> <%= address.state %></p>
+                            <p><strong>Zipcode:</strong> <%= address.zipcode %></p>
+                            <!-- <button  style="color: white;background-color: lightskyblue;border-color: white;width: 100px;">Edit</button>
+                            <button style="color: white;background-color: lightskyblue;border-color: white;width: 100px;">Delete</button> -->
 
-  const countdown = setInterval(() => {
-    timeLeft--;
-    timer.textContent = timeLeft;
-    if (timeLeft <= 0) {
-      clearInterval(countdown);
-      resendBtn.removeAttribute('disabled');
-      resendBtn.classList.remove('disabled');
-      resendBtn.classList.add('exceeded');
-      resendBtn.textContent = 'Resend OTP';
-    }
-  }, 1000)
-</script>
-</body>
-<script>
-  if ( window.history.replaceState ) {
-window.history.replaceState( null, null, window.location.href );
-}
-  </script>
+                            
+
+                             
+                            <a  class="address"    href="/editProfile/<%=address._id%>">Edit</a>
+                            <form class="address" action="/deleteProfile/<%=address.id%>" method="post">
+                                <button type="submit">Delete</button>
+                              </form>
+                                                         
+                        </div>
+                 
+                <% }); %>
+
+
+                    <% } %>
+               
+            </div>
+       
+            <div class="row gutters ">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                        <button type="button" id="submit" name="submit" class="btn btn-secondary text-white">Cancel</button>
+                        <button type="button" id="submit" name="submit" class="btn  bg-dark text-white    ">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+
+
+
+
+
 
 
 
@@ -366,5 +524,3 @@ window.history.replaceState( null, null, window.location.href );
       window.history.replaceState( null, null, window.location.href );
     }
       </script>
-    
-    for no catch (form resubmission)

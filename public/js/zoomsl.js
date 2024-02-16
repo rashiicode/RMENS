@@ -147,7 +147,6 @@
 
                 self.cld.destM += (self.cld.pageX999 - self.cld.destM) / specs.setting.loopspeedanimate;
                 self.cld.destN += (self.cld.pageY999 - self.cld.destN) / specs.setting.loopspeedanimate;
-
                 specs.$magnifier.css({
                     left: self.cld.destM - Math.round(specs.magnifier.w / 2),
                     top: self.cld.destN - Math.round(specs.magnifier.h / 2)

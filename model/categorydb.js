@@ -15,6 +15,10 @@ isStatus: {
     type: Boolean, 
     default: true
 },
+categoryUrl:{
+    type:String,
+    default: true
+}
 
 
 })

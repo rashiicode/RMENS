@@ -219,83 +219,6 @@
 /* //........ footert ........// */
 
 
-footer {
-    width: 100%;
-    background: var(--black);
-}
-
-.footer-container .content_1 img {
-    height: 25px;
-    width: 180px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 60px 0;
-
-
-   
-}
-
-.footer-container h4 {
-    color: var(--white);
-    font-weight: 500;
-    letter-spacing: 1px;
-    margin-bottom: 25px;
-    font-size: 18px;
-}
-
-.footer-container a {
-    display: block;
-    text-decoration: none;
-    color: var(--grey);
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-.footer-container .content_1 p,
-.footer-container .content_4 p {
-    color: var(--grey);
-    margin: 25px 0;
-    font-size: 14px;
-    
-}
-
-.footer-container .content_4 input[type="email"] {
-    background-color: var(--black);
-    border: none;
-    color: var(--white);
-    outline: none;
-    padding: 15px 0;
-}
-
-.footer-container .content_4 .f-mail {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-container .content_4 .bx {
-    color: var(--white);
-}
-
-.f-design {
-    width: 100%;
-    color: var(--white);
-    text-align: center;
-}
-
-.f-design .f-design-txt {
-    border-top: 1px solid var(--grey);
-    padding: 25px 0;
-    font-size: 14px;
-    color: var(--grey);
-  
-}
-
-
-
 </style>
 
 <section style="height: 35px;"  class=" top-txt ">
@@ -396,7 +319,7 @@ footer {
           
     </form>
     <form id="resendForm" action="/passwordResendOtp" method="POST">
-        <button style="width: 500px;margin-left: 300px;margin-top: 20px;" type="submit" class="btn btn-dark" id="resendButton" disabled>Resend OTP in <span id="timer">10</span> seconds</button>
+        <button style="width: 500px;margin-left: 300px;margin-top: 20px;margin-bottom: 200px;" type="submit" class="btn btn-dark" id="resendButton" disabled>Resend OTP in <span id="timer">10</span> seconds</button>
       </form>
     </div>
  
@@ -433,52 +356,7 @@ window.history.replaceState( null, null, window.location.href );
 
 
 
-
-
-   <footer  style="margin-top: 50px;"  >
-    <div class="footer-container container-fluid  p-5">
-        <div class="content_1">
-            <!-- <img style="background-color: white;width: 30px;height: 30px;" src="/image/dice.png"> -->
-            <h style="color: white;"><mark  style="background-color:var(--grey);">R-MENS</mark></h> 
-            <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
-            <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
-        </div>
-        <div class="content_2">
-            <h4>CUSTOMER SERVICE </h4>
-            <a href="#sellers">Delivery information</a>
-            <a href="#sellers">Return and Exchange</a>
-            <a href="#sellers">Contact Us</a>
-            <a href="#sellers">FAQS</a>
-        </div>
-
-
-        <div  style="float: right;"   class="content_3">
-            <h4>R MENS PRODUCTS</h4>
-            <a href="./contact.html">FORMAL SHIRTS</a>
-            <a href="https://payment-method-sb.netlify.app/" target="_blank"> PREMIUM SUITS</a>
-            <a href="https://delivery-status-sb.netlify.app/" target="_blank">TROUSERS</a>
-            <a href="https://codepen.io/sandeshbodake/full/Jexxrv" target="_blank">CLOTHING</a>
-        </div>
-
-
-
-        <div class="content_4">
-            <h4>FOLLOW US</h4>
-            <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
-    
-            <div class="f-mail">
-                <input type="email" placeholder="Your Email">
-                <i class='bx bx-envelope'></i>
-            </div>
-            <hr>
-        </div>
-    </div>
-    <div class="f-design">
-        <div class="f-design-txt container">
-            <p  style="margin-left: 500px;">2024 R-MENS BUSINESS LTD  </p>
-        </div>
-    </div>
-</footer>
+<%-include('foot')-%> 
 
     <%- include('footer')-%>  
 

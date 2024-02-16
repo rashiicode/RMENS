@@ -23,18 +23,15 @@
 
 
 
-
-
-  <%let Number=0%>
+<% let Number = 0 %>
 <% if (categoryListing && categoryListing.length > 0) { %>
 
-    <!-- <table > -->
-      <table id="example" class="table table-striped" style="width:100%">
+    <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Description</th
+                <th>Description</th> <!-- Added missing closing </th> tag -->
                 <th>Actions</th>
                 <th>Status</th>
             </tr>
@@ -42,47 +39,39 @@
         <tbody> 
           
             <% categoryListing.forEach(category => { %>
-               <%Number ++%>
+               <% Number++ %>
                 <tr>
                     <td><%= Number %></td>
                     <td><%= category.categoryName %></td>
                     <td><%= category.description %></td>
-                    <td class="actions">
+                    <td>
                         <!-- EDIT Form -->
-                   <!-- EDIT Link -->
-<!-- EDIT Link -->
-<div class="edit " style="display: flex;margin-left: 40px;" >
-           
-  <a style="background-color: rgba(104, 101, 193, 0.947); color: white;border-color: aliceblue;color: rgb(238, 238, 238);padding: 5px;width: 70px;text-align: center;position: relative;right:40px;"href="/admin/editCategory/<%= category._id %>" class="list-button">
-    EDIT
-  </a>
+                        <!-- EDIT Link -->
+                        <div class="edit" style="display: flex;margin-left: 40px;">
+                            <a style="background-color: rgba(104, 101, 193, 0.947); color: white;border-color: aliceblue;color: rgb(238, 238, 238);padding: 5px;width: 70px;text-align: center;position: relative;right:40px;" href="/admin/editCategory/<%= category._id %>" class="list-button">
+                                EDIT
+                            </a>
 
-<% if (category.isStatus) { %>
-  <form action="/admin/blockCategory/<%= category._id %>" method="POST" style="display: inline;">
-      <button type="submit" style="background-color: rgba(104, 101, 193, 0.947); color: white;border-color: aliceblue;color: rgb(242, 242, 242);padding: 5px;width: 70px;text-align: center;position: relative;right:40px;">LIST</button>
-  </form>
-<% } else { %>
-  <form action="/admin/unblockCategory/<%= category._id %>" method="POST" style="display: inline;">
-      <button type="submit" style="background-color: rgba(176, 0, 0, 0.947); color: white;border-color: aliceblue;color: white;border-color: aliceblue;color: rgb(242, 242, 242);padding: 5px;width: 70px;text-align: center;">UNLIST</button>
-  </form>
-<% } %> 
-
- <td><%= category.isStatus ? 'Active' : 'Blocked' %></td>
-
-
-
+                            <% if (category.isStatus) { %>
+                                <form action="/admin/blockCategory/<%= category._id %>" method="POST" style="display: inline;">
+                                    <button type="submit" style="background-color: rgba(104, 101, 193, 0.947); color: white;border-color: aliceblue;color: rgb(242, 242, 242);padding: 5px;width: 70px;text-align: center;position: relative;right:40px;">LIST</button>
+                                </form>
+                            <% } else { %>
+                                <form action="/admin/unblockCategory/<%= category._id %>" method="POST" style="display: inline;">
+                                    <button type="submit" style="background-color: rgba(176, 0, 0, 0.947); color: white;border-color: aliceblue;color: white;border-color: aliceblue;color: rgb(242, 242, 242);padding: 5px;width: 70px;text-align: center;">UNLIST</button>
+                                </form>
+                            <% } %> 
+                        </div>
+                    </td>
+                    <td><%= category.isStatus ? 'Active' : 'Blocked' %></td>
                 </tr>
             <% }); %>
-
         </tbody>
-
     </table>
 
 <% } else { %>
     <p>No categories found</p>
 <% } %>
-
-
 
 
 

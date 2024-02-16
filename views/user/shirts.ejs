@@ -26,7 +26,7 @@
 
 
 /* //........ Navbar ........// */
-
+/* 
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines {
     display: none;
@@ -149,11 +149,9 @@
         transform: translate(-150%);
         display: flex;
         flex-direction: column;
-        /* margin-left: -40px;
-        padding-left: 40px; */
+       
         text-align: center;
         transition: transform 0.5s ease-in-out;
-        /* box-shadow: 5px 0px 10px 0px #aaa; */
         overflow: scroll;
     }
    
@@ -207,12 +205,12 @@
 }
 
 .nav-linkic img {
-  width: 30px; /* Adjust the width of the icons as needed */
-  height: 40px; /* Adjust the height of the icons as needed */
+  width: 30px;
+  height: 40px; 
   display: block;
   margin: 0 auto;
   
-}
+} */
 
  
 /* 
@@ -337,103 +335,37 @@ footer {
 
 </style>
 
-<section style="height: 35px;"  class=" top-txt ">
-    <div class="head container ">
-        <div  class="head-txt ">
-           
-            <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: 10px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
-        </div>
-        <div class="sing_in_up ">
-            <!-- <a href="/login">SIGN IN</a>
-            <a href="/signup ">SIGN UP</a> -->
-        </div>
-    </div>
-</section>
 
-
-<nav style="height: 70px;" class="navbar">
-    <div  class="navbar-container">
-        <input type="checkbox" name="" id="checkbox">
-    
-        <nav  style="margin-top: 1px;"  class="navbar navbar-expand-lg .bg-light-subtle">
-            <div class="container-fluid"> 
-              <a class="navbar-brand" href="/landing"    style="color: rgb(0, 0, 0);margin-left: 60px;" > <b> R-MEN 'S</b></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-5 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/suits"  style="margin-left: 60px;"><small>SUITS</small></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/shirts"><small>SHIRTS</small></a>
-                </li>
-                <li  class="nav-item dropdown">
-               <a class="nav-link"  href="/pants" >
-                 <small> TROUSERS</small> 
-                  </a>
-                    <!-- <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul> -->
-                  </li>                       
-                </ul>
-                <div class="find" style="margin-left: 20%;" >
-             <form style="width: 200% ;"  class="d-flex" role="search">
-            <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-dark" type="submit">Search</button> 
-          </form>
-        </div>
-              </div>
-            </div> 
-        
-      
-          </nav>
-         
-      
-
-          <nav style="margin-left:300px;" class="navbaric">
-            <a href="/wishlist" class="nav-linkic"> <img  style="height: 35px;width: 35px;margin-top: 4px;margin-left: 5px;" src="/image/wishlistr icon.png"></a>
-            <a href="/login" class="nav-linkic"><img  style="height: 30px;width: 30px;margin-top: 4px;" src="/image/profile icon.png"></a>
-            <a href="/cart" class="nav-linkic"> <img  style="height: 40px;width: 40px; "   src="/image/shopping-bag.png"></a>
-          </nav>
-    
-    
-    </div>
-
-
+<%- include('nav')-%> 
 
 
  <!-- Assuming this is your shirts EJS file -->
 
-<section id="sellers"   >
+<section id="sellers" >
    
 
 
 
 
-                <div class="container-fluid " >
-                    <div class="row mt-2 prtlistcontainer">
+                <div class="container-fluid" >
+                    <div class="row mt-3 prtlistcontainer">
                         <% productList.forEach(product => { %>
-                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 mt-3">
-                                <div class="card ">
+                            <div class="col-3 col-sm-2 col-md-5 col-lg-3 mt-3">
+                                <div class="card">
                                     <div class="card-img">
                                         <img src="<%= product.images[0].slice(6)%>" class="card-img-top " alt="..." style="margin-left: 0px;">
                                     </div>
                                     <div class="card-body">
-                     <p><%=product.Name%> </p>
+                                       <p><%=product.Name%> </p>
                                         <p><%= product.productName%></p>
                                         <p>Rs: <%= product.price%></p>
                                         <% if (product.isStatus) { %>
                                             <a href="/productDetail/<%= product._id %>"><button type="button" class="btn btn-dark">Buy Now</button></a>
                                          
                                         <% } else{%>
-
-                                       <p  style="background-color: red;color: white;">Product currently unavailable</p>
-
+ 
+                                       <p  style="background-color: red;color: white;">Product currently unavailable</p> 
+ 
                                         <%} %>
                                     </div>
                                 </div>

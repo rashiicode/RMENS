@@ -1,4 +1,4 @@
-const userCollection = require("../model/signupp")
+const userCollection = require("../model/user")
 const categoryCollection = require("../model/categorydb");
 const productCollection = require("../model/product");
     
@@ -86,18 +86,20 @@ const adminProduct=async(req,res)=>{
 
 const addProduct=async (req,res)=>{ 
     if(req.session.admin){
+        const productedit=await productCollection.find()
+
 
         const  categoryExist=await categoryCollection.find()
 
-        res.render("admin/addproduct",{categoryExist}) 
+        res.render("admin/addproduct",{categoryExist,productedit}) 
 
      }else{
         res.redirect("/admin/login")
      }
-     
- 
+   
  };
 
+ 
  const addproductPost = async (req,res) => {
     try {
         const { Name, category, price, rating, stock, brand, colour, description } = req.body;
@@ -200,6 +202,10 @@ const unblockUser = async (req,res) => {
     }
 };
 
+
+
+
+
 const blockProduct= async (req,res) => {
     console.log("CATEGORYYY   ONEEEEEE");
         try {
@@ -296,6 +302,7 @@ const addNewCategory = async (req,res) => {
         const newCategory = {
             categoryName: req.body.categoryName,
             description: req.body.description,
+            categoryUrl:req.body.categoryUrl
         };
 
         // Check if the category with the same name already exists
@@ -309,7 +316,7 @@ const addNewCategory = async (req,res) => {
         console.log("Function reached");
 
         // Check if both fields are filled
-        if (newCategory.categoryName.trim() === '' || newCategory.description.trim() === '') {
+        if (newCategory.categoryName.trim() === '' || newCategory.description.trim() === ''||newCategory.categoryUrl.trim() === '') {
             const error = 'Please fill both fields';
             return res.render('admin/categoryAdd', { error });
         }

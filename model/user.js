@@ -5,7 +5,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/RMensproject").then(()=>{
     console.log("mongoDb nott connected");
 })
  
-const Schema=new mongoose.Schema({
+const userSchema=new mongoose.Schema({
 
     name:{
         type:String,
@@ -18,6 +18,10 @@ const Schema=new mongoose.Schema({
         type:String,
         // required:true
         //ee case ondel mathrame poguloo ilenghil ath ilelm pogm
+     address: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'addressCollection'  // Reference to the profil model
+        }],   
 
     },
     isActive: { 
@@ -33,7 +37,10 @@ const Schema=new mongoose.Schema({
             type: Date,
             default: null
         }
-    }
+    },
+  
+
+
 }, { 
     
     timestamps: true 
@@ -46,7 +53,5 @@ const Schema=new mongoose.Schema({
 
 
 
-
-
-const collectionmodel=mongoose.model("signupCollection",Schema)
+const collectionmodel=mongoose.model("UserCollection",userSchema)
 module.exports=collectionmodel;

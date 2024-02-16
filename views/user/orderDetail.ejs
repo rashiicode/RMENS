@@ -216,18 +216,79 @@
 
  
 /* 
-/* //........ footert ........// */
+/* //........ css of profile ........// */
+body {
+    margin: 0;
+    padding-top: 40px;
+    color: #2e323c;
+    background: #f5f6fa;
+    position: relative;
+    height: 100%;
+}
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #9fa8b9;
+}
+.account-settings .about {
+    margin: 2rem 0 0 0;
+    text-align: center;
+}
+.account-settings .about h5 {
+    margin: 0 0 15px 0;
+    color: #454a4e;
+}
+.account-settings .about p {
+    font-size: 0.825rem;
+}
+.form-control {
+    border: 1px solid #cfd1d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: #ffffff;
+    color: #2e323c;
+}
+
+.card {
+    background: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
 
 
 
 
 </style>
 
-<section style="height: 35px;"  class=" top-txt ">
+<section style="height: 35px;margin-top: -38px;"  class=" top-txt ">
     <div class="head container ">
         <div  class="head-txt ">
            
-             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -50px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
+             <p style="text-align: center;color: black;" > <a style="color: rgb(1, 6, 8);text-align: end;margin-left: -200px;" href="#">WINTER</a> DROP NOW AVAILABLE FOR ALL</p> 
         </div>
         <div class="sing_in_up ">
             <!-- <a href="/login">SIGN IN</a>
@@ -281,7 +342,7 @@
               </div>
             </div> 
         
-      
+       
           </nav>
          
       
@@ -297,56 +358,94 @@
 
 
 
-
-
  
-<div class="containerl" style="margin-top:-90px;margin-left: 150px;">
-    <h2   style="text-align: center;margin-top: 200px;margin-left: 250px;font-family: 'Open Sans', sans-serif;
-    font-family: 'Play', sans-serif;">Forgot Verification<br><small style="color: red;"><%=locals.emptyFieldsforgot%></small></h2>
-  
-    <form action="/forgetOtp" method="post">
-       
-       <div class="form-groupp"  style="width: 500px;margin-left: 300px;">
-         <!-- <label for="pwd">Password:</label> -->
-         <input style="height: 50px;border-color: black;" type="text" class="form-control" id="pwd" placeholder="email address" name="email">
 
-        
-       </div>
-       <div  style="margin-left: 300px;"> 
-        
-            
-      
-       </div>
-       <button style="width: 500px;margin-left: 300px;margin-top: 20px;margin-bottom: 200px;" type="submit" class="btn btn-dark">Submit</button>
-       
-    </form>
+ <!-- profile  -->
+
+
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 container-fluid" style="margin-bottom: 100px;margin-top: 50px;margin-left: 200px;">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"  style="margin-top: -10px;margin-bottom: 80px;"   >
+                    <button  class="btn-secondary" style="width: 1030px;height: 30px;margin-left: -18px;height: 50px;margin-top:-30px;color: #fff;border-color: #fff;"  >ADD NEW ADDRESS</button>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="fullName">First Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your First Name">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="eMail">Last Name</label>
+                        <input type="email" class="form-control" id="eMail" placeholder="Enter your Last Name">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="phone">Email</label>
+                        <input type="text" class="form-control" id="phone" placeholder=" Enter your Email">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="website">Phone no</label>
+                        <input type="url" class="form-control" id="website" placeholder="Enter your Phone no">
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mt-3 mb-2 text-dark mb-5">Address</h6>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="Street">Street</label>
+                        <input type="name" class="form-control" id="Street" placeholder="Enter Street">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="ciTy">City</label>
+                        <input type="name" class="form-control" id="ciTy" placeholder="Enter City">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="sTate">State</label>
+                        <input type="text" class="form-control" id="sTate" placeholder="Enter State">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-5">
+                    <div class="form-group">
+                        <label for="zIp">Zip Code</label>
+                        <input type="text" class="form-control" id="zIp" placeholder="Zip Code">
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters ">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right" style="display: flex;">
+                        <form action="/profile">
+                            <button class="btn btn-secondary text-white "  style="margin-left: 800px;width: 90px;">Back</button>
+
+                        </form>
+                        <button type="button" id="submit" name="submit" class="btn  bg-dark text-white    "  style="margin-left: 20px;width: 200px;">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
- 
+    </div>
+    </div>
+    </div>
+    
 
-   <script>
-  const timer = document.getElementById('timer');
-  const resendBtn = document.getElementById('resendButton');
 
-  let timeLeft = 10; // Set the timer duration in seconds
 
-  const countdown = setInterval(() => {
-    timeLeft--;
-    timer.textContent = timeLeft;
-    if (timeLeft <= 0) {
-      clearInterval(countdown);
-      resendBtn.removeAttribute('disabled');
-      resendBtn.classList.remove('disabled');
-      resendBtn.classList.add('exceeded');
-      resendBtn.textContent = 'Resend OTP';
-    }
-  }, 1000)
-</script>
-</body>
-<script>
-  if ( window.history.replaceState ) {
-window.history.replaceState( null, null, window.location.href );
-}
-  </script>
+
+
 
 
 
@@ -366,5 +465,3 @@ window.history.replaceState( null, null, window.location.href );
       window.history.replaceState( null, null, window.location.href );
     }
       </script>
-    
-    for no catch (form resubmission)

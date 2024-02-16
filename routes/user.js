@@ -1,7 +1,7 @@
 const express=require("express")
 const router=express.Router()
 const userController=require("../controller/userController")
-const isActive=require("../middleware/userStatusCheck")
+const isActive=require("../middleware/usermon/userStatusCheck")
 // const productCollection=require("../model/product")
 
 
@@ -17,7 +17,23 @@ router.get("/",userController.home)
 router.get("/login",userController.login) 
 router.post("/login",userController.loginPost)
 router.get("/landing",userController.landingPage)
-                                                                        
+
+
+// profile INNNN
+router.get('/profile',userController.profile)  
+router.get('/editProfile/:id',userController.editProfile)     
+router.post('/editProfile/:id',userController.editProfilePost)     
+
+router.post('/deleteProfile/:id',userController.deleteProfile)     
+
+
+// cart details
+router.get('/add-to-cart/:id',userController.addCart)
+ 
+
+router.get('/addProfile',userController.addProfile)   
+router.post('/addProfile/:id',userController.addProfilePost)
+router.get('/orderDetail',userController.orderDetail)                  
 
 
 // signup
@@ -45,16 +61,9 @@ router.post('/passwordResendOtp', userController.passwordResendOtp );
 
 
 router.get("/confirmPage",userController.confirmPageget)
-// router.get("/forgotOtp",userController.forgotOtpGet)
-// router.post("/forgotOtp",userController.forgotOtp) /* 1*/
-// router.get('/generate-otp', userController.getGenerateOTP);/*2 */
-// router.post('/generate-otp', userController.generateOtp);/*2 */
-// router.post('/resend-otp', userController.resendOtp);
+
                                                        
 
-// router.post('/verify-otp', userController.verifyOtp);/3/
-// router.get('/reset-password', userController.verifyOtp);/4/
-// router.post('/reset-password', userController.resetPassword);/5/
 
 
 router.get("/suits",userController.suits)

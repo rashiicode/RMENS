@@ -1,5 +1,6 @@
 
-const usersFind= require("../model/signupp")
+
+const usersFind= require("../../model/user")
 
 
 const userStatusCheck = async(req,res,next)=>{
